@@ -1,0 +1,78 @@
+.wrap {
+  padding: 20px;
+  height: 100%;
+  position: relative;
+}
+
+.linkTabs {
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  width: 80px;
+  text-align: center;
+  line-height: 32px;
+  border-radius: 8px;
+  margin: 0;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.linkTabItem {
+  margin: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &.active {
+    background-color: #000;
+  }
+
+  &:hover {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  }
+}
+
+.linkList {
+  overflow: hidden;
+  margin-left: 90px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.linkItem {
+  float: left;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  color: #444;
+  padding: 0 10px;
+  border-radius: 8px;
+  margin-right: 16px;
+}
+
+.linkItemImg {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.linkItemWrap {
+  width: 100px;
+  padding: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.linkItemTitle {
+  margin: 4px 0;
+}
+
+.linkItemSubTitle {
+  // margin-top: 4px;
+  font-size: 12px;
+  color: #888;
+}
