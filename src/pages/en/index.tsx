@@ -132,7 +132,6 @@ export default class En_Zh extends Component<any, any> {
     });
 
     const { data, code } = res.body;
-    hideLoading();
 
     if (code !== 0) {
       Toast.error(res.message);
@@ -140,8 +139,13 @@ export default class En_Zh extends Component<any, any> {
     }
 
     console.log(res, data);
-    this.setState({
-      result: data.data,
-    });
+    this.setState(
+      {
+        result: data.data,
+      },
+      () => {
+        hideLoading();
+      },
+    );
   };
 }
