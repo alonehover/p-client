@@ -8,10 +8,9 @@ import Toast from '@/components/toast';
 const HOST = 'http://localhost:3000';
 
 function formatRes(data: any) {
-  console.log('format', data);
   if (data.code !== 0) {
     Toast.error(data.message);
-    return;
+    return false;
   }
 
   return data.data;

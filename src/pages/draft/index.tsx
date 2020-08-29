@@ -51,7 +51,6 @@ export default class Draft extends Component<any, any> {
 
   async getData() {
     const res = await Http.get(CommonAPI.draft.getVal);
-    console.log(res);
     if (res) {
       this.setState({
         words: res,
@@ -60,11 +59,9 @@ export default class Draft extends Component<any, any> {
   }
 
   async toSave() {
-    console.log('success', this.state.words);
     const res = await Http.post(CommonAPI.draft.setVal, {
       words: this.state.words,
     });
-    console.log(res);
     Toast.success('保存成功');
   }
 }

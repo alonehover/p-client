@@ -1,5 +1,6 @@
-import React, { Component, createRef } from 'react';
+import React, { Component } from 'react';
 import superagent from 'superagent';
+import Http, { CommonAPI } from '@/common/api';
 
 import Toast from '@/components/toast';
 import Icon from '@/components/icon';
@@ -108,41 +109,28 @@ export default class En_Zh extends Component<any, any> {
   }
 
   handleInputChange = (e: any) => {
-    // console.log(e.target.value);
     this.setState({
       words: e.target.value,
     });
   };
 
   toQuery = async () => {
-    // console.log(this.state.words);
     if (this.state.words === '') {
       Toast.warning('请输入查询内容', 5000);
       return false;
     }
 
     const hideLoading = Toast.loading('翻译中', 2000);
-    const res: any = await superagent
-      .post('https://api.t4f.app/translate')
-      .send({
-        words: this.state.words,
-      });
+    const res: any = await Http.post(CommonAPI.en.translate, {
+      words: this.state.words,
+    });
 
-    const { data, code } = res.body;
-
-    if (code !== 0) {
-      Toast.error(res.message);
+    if (!res) {
       return false;
     }
 
-    // console.log(res, data);
-    this.setState(
-      {
-        result: data.data,
-      },
-      () => {
-        hideLoading();
-      },
-    );
+    this.setState({ result: res.data }, () => {
+      hideLoading();
+    });
   };
 }
