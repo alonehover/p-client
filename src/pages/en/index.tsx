@@ -7,8 +7,6 @@ import Icon from '@/components/icon';
 import styles from './index.less';
 
 export default class En_Zh extends Component<any, any> {
-  public canvasRef: any;
-  public canvasWrapRef: any;
   constructor(props: any) {
     super(props);
 
@@ -18,9 +16,6 @@ export default class En_Zh extends Component<any, any> {
       loading: false,
       active: false,
     };
-
-    this.canvasRef = createRef();
-    this.canvasWrapRef = createRef();
   }
 
   componentDidMount() {
@@ -51,7 +46,7 @@ export default class En_Zh extends Component<any, any> {
           />
         </div>
 
-        <div className={styles.resultContent} ref={this.canvasWrapRef}>
+        <div className={styles.resultContent}>
           {result.length ? (
             <div className={styles.translateContent}>
               {result
@@ -113,23 +108,25 @@ export default class En_Zh extends Component<any, any> {
   }
 
   handleInputChange = (e: any) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     this.setState({
       words: e.target.value,
     });
   };
 
   toQuery = async () => {
-    console.log(this.state.words);
+    // console.log(this.state.words);
     if (this.state.words === '') {
       Toast.warning('请输入查询内容', 5000);
       return false;
     }
 
     const hideLoading = Toast.loading('翻译中', 2000);
-    const res = await superagent.post('https://api.t4f.app/translate').send({
-      words: this.state.words,
-    });
+    const res: any = await superagent
+      .post('https://api.t4f.app/translate')
+      .send({
+        words: this.state.words,
+      });
 
     const { data, code } = res.body;
 
@@ -138,7 +135,7 @@ export default class En_Zh extends Component<any, any> {
       return false;
     }
 
-    console.log(res, data);
+    // console.log(res, data);
     this.setState(
       {
         result: data.data,

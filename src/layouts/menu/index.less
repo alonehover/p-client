@@ -1,53 +1,58 @@
 .menuLeft {
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 64px;
-    background-color: black;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+  background-color: black;
 }
 
 .menuList {
-    width: 100%;
+  width: 100%;
 }
 
 .menuItem {
-    height: 64px;
-    color: #fff;
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: margin-right .2s;
-    border-radius: 50%;
-    
-    &:hover {
-        .menuActive;
-    }
+  height: 64px;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: margin-right 0.2s;
+  border-radius: 50%;
 
-    a {
-        display: block;
-        color: #fff;
-        padding: 20px 0;
-    }
+  &:hover {
+    .menuActive;
+  }
+
+  a {
+    display: block;
+    color: #fff;
+    padding: 20px 0;
+  }
 }
 
 .menuActive {
-    margin-right: -12px;
-    background: #000;
-    
+  margin-right: -12px;
+  background: #000;
 
-    .menuIcon {
-        margin-right: -12px;
-        font-size: 24px;
-    }
+  .menuIcon {
+    margin-right: -12px;
+    font-size: 24px;
+  }
 }
 
 .menuIcon {
-    font-size: 20px;
-    transition: font-size .1s;
+  font-size: 20px;
+  transition: font-size 0.1s;
+}
+
+@media all and (max-width: 400px) {
+  .menuLeft {
+    z-index: 9;
+  }
 }

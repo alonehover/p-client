@@ -6,7 +6,7 @@
 }
 
 .queryBox {
-  width: 30%;
+  flex: 1;
   height: 100%;
 }
 
@@ -24,7 +24,7 @@
 }
 
 .resultContent {
-  flex: 1;
+  flex: 2;
   margin-left: 20px;
   border-radius: 8px;
   background-color: rgba(255, 255, 255, 0.1);
@@ -78,4 +78,15 @@
   margin-right: 16px;
   white-space: nowrap;
   color: #999;
+}
+
+@media all and (max-width: 400px) {
+  .flexWrap {
+    flex-direction: column;
+  }
+
+  .resultContent {
+    margin-left: 0;
+    margin-top: 10px;
+  }
 }
