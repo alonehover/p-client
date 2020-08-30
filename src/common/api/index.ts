@@ -4,8 +4,8 @@ import CommonAPI from './commonApi';
 
 import Toast from '@/components/toast';
 
-// const HOST = 'https://api.t4f.app'
-const HOST = 'http://localhost:3000';
+const HOST = 'https://api.t4f.app';
+// const HOST = 'http://localhost:3000';
 
 function formatRes(data: any) {
   if (data.code !== 0) {
