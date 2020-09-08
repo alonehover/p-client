@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Http, { CommonAPI } from '@/common/api';
-
+import { debounce } from '@/utils';
 import Toast from '@/components/toast';
 import styles from './index.less';
 
@@ -28,6 +28,10 @@ export default class Draft extends Component<any, any> {
         this.toSave();
       }
     };
+
+    document.onkeyup = debounce(() => {
+      this.toSave();
+    }, 1000);
   }
 
   render() {

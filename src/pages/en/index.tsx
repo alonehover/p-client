@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import superagent from 'superagent';
 import Http, { CommonAPI } from '@/common/api';
-
+import { debounce } from '@/utils';
 import Toast from '@/components/toast';
 import Icon from '@/components/icon';
 
@@ -32,6 +31,10 @@ export default class En_Zh extends Component<any, any> {
         this.toQuery();
       }
     };
+
+    document.onkeyup = debounce(() => {
+      this.toQuery();
+    }, 2000);
   }
 
   render() {
