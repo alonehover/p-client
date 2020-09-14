@@ -17,7 +17,7 @@ export default class En_Zh extends Component<any, any> {
       active: false,
     };
 
-    this.handleKeyUp = debounce(this.handleKeyUp, 2000);
+    this.handleKeyUp = debounce(this.handleKeyUp.bind(this), 2000);
   }
 
   componentDidMount() {
