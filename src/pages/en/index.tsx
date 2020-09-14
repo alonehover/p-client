@@ -16,6 +16,8 @@ export default class En_Zh extends Component<any, any> {
       loading: false,
       active: false,
     };
+
+    this.toQuery = debounce(this.toQuery, 2000);
   }
 
   componentDidMount() {
@@ -31,10 +33,6 @@ export default class En_Zh extends Component<any, any> {
         this.toQuery();
       }
     };
-
-    document.onkeyup = debounce(() => {
-      this.toQuery();
-    }, 2000);
   }
 
   render() {
@@ -47,6 +45,8 @@ export default class En_Zh extends Component<any, any> {
             className={styles.queryInput}
             placeholder="请输入需要翻译的内容...(Ctrl + 回车查询)"
             onChange={this.handleInputChange}
+            // onKeyUp={this.toQuery}
+            onKeyUpCapture={this.toQuery}
           />
         </div>
 
@@ -123,17 +123,24 @@ export default class En_Zh extends Component<any, any> {
       return false;
     }
 
+    if (this.state.loading) {
+      return;
+    }
+
+    this.setState({ loading: true });
     const hideLoading = Toast.loading('翻译中', 2000);
     const res: any = await Http.post(CommonAPI.en.translate, {
       words: this.state.words,
     });
 
-    if (!res) {
-      return false;
-    }
-
-    this.setState({ result: res.data }, () => {
-      hideLoading();
-    });
+    this.setState(
+      {
+        result: res ? res.data : [],
+        loading: false,
+      },
+      () => {
+        hideLoading();
+      },
+    );
   };
 }

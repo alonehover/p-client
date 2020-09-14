@@ -1,4 +1,4 @@
-export function debounce(fn: any, wait: number) {
+export function debounce(fn: any, wait: number): any {
   let callback = fn;
   let timerId: any = null;
 
