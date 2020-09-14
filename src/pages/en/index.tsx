@@ -114,6 +114,7 @@ export default class En_Zh extends Component<any, any> {
   handleInputChange = (e: any) => {
     this.setState({
       words: e.target.value,
+      active: true,
     });
   };
 
@@ -127,11 +128,11 @@ export default class En_Zh extends Component<any, any> {
       return false;
     }
 
-    if (this.state.loading) {
+    if (this.state.loading || !this.state.active) {
       return;
     }
 
-    this.setState({ loading: true });
+    this.setState({ loading: true, active: false });
     const hideLoading = Toast.loading('翻译中', 2000);
     const res: any = await Http.post(CommonAPI.en.translate, {
       words: this.state.words,
