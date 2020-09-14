@@ -46,7 +46,7 @@ export default class En_Zh extends Component<any, any> {
             placeholder="请输入需要翻译的内容...(Ctrl + 回车查询)"
             onChange={this.handleInputChange}
             // onKeyUp={this.toQuery}
-            onKeyUpCapture={this.toQuery}
+            onKeyUpCapture={this.handleKeyUp}
           />
         </div>
 
