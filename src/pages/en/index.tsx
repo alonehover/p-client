@@ -17,7 +17,7 @@ export default class En_Zh extends Component<any, any> {
       active: false,
     };
 
-    this.toQuery = debounce(this.toQuery, 2000);
+    this.handleKeyUp = debounce(this.handleKeyUp, 2000);
   }
 
   componentDidMount() {
@@ -116,6 +116,10 @@ export default class En_Zh extends Component<any, any> {
       words: e.target.value,
     });
   };
+
+  handleKeyUp() {
+    this.toQuery();
+  }
 
   toQuery = async () => {
     if (this.state.words === '') {
