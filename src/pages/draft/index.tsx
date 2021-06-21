@@ -18,6 +18,7 @@ export default class Draft extends Component<any, any> {
 
     document.onkeydown = e => {
       var ev = e || window.event;
+      console.log(ev);
       //获取键盘的keyCode值
       var nKeyCode = ev.keyCode || ev.which || ev.charCode;
       //获取ctrl 键对应的事件属性
@@ -25,6 +26,7 @@ export default class Draft extends Component<any, any> {
 
       if (nKeyCode === 13 && bCtrlKeyCode) {
         e.preventDefault();
+        console.log(nKeyCode, bCtrlKeyCode);
         this.toSave();
       }
     };
@@ -32,6 +34,11 @@ export default class Draft extends Component<any, any> {
     document.onkeyup = debounce(() => {
       this.toSave();
     }, 1000);
+  }
+
+  componentWillUnmount() {
+    document.onkeydown = null;
+    document.onkeyup = null;
   }
 
   render() {

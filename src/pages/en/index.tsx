@@ -27,12 +27,16 @@ export default class En_Zh extends Component<any, any> {
       var nKeyCode = ev.keyCode || ev.which || ev.charCode;
       //获取ctrl 键对应的事件属性
       var bCtrlKeyCode = ev.ctrlKey || ev.metaKey;
-
+      console.log('object', nKeyCode, bCtrlKeyCode);
       if (nKeyCode === 13 && bCtrlKeyCode) {
         e.preventDefault();
         this.toQuery();
       }
     };
+  }
+
+  componentWillUnmount() {
+    document.onkeydown = null;
   }
 
   render() {
@@ -119,6 +123,10 @@ export default class En_Zh extends Component<any, any> {
   };
 
   handleKeyUp() {
+    if (this.state.words === '') {
+      return;
+    }
+
     this.toQuery();
   }
 
